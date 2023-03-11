@@ -1,9 +1,7 @@
-import path from "path";
-
+import { Cargo, Cross } from "@actions-for-rust/core";
 import * as core from "@actions/core";
-
+import path from "path";
 import * as input from "./input";
-import { Cargo, Cross } from "@actions-rs/core";
 
 export async function run(actionInput: input.Input): Promise<void> {
     let program;
@@ -32,7 +30,8 @@ async function main(): Promise<void> {
     try {
         await run(actionInput);
     } catch (error) {
-        core.setFailed((<Error>error).message);
+        if (error instanceof Error) core.setFailed(error);
+        else core.setFailed(`Unknown Error: ${error}`);
     }
 }
 

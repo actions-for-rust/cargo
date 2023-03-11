@@ -2,8 +2,7 @@
  * Parse action input into a some proper thing.
  */
 
-import { input } from "@actions-rs/core";
-
+import { input } from "@actions-for-rust/core";
 import stringArgv from "string-argv";
 
 // Parsed action input
