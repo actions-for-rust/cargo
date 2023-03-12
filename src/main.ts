@@ -1,4 +1,5 @@
 import { Cargo, Cross } from "@actions-for-rust/core";
+import { getErrorMessage } from "@actions-for-rust/core/dist/utils/errors";
 import * as core from "@actions/core";
 import path from "path";
 import * as input from "./input";
@@ -24,15 +25,8 @@ export async function run(actionInput: input.Input): Promise<void> {
 async function main(): Promise<void> {
     const matchersPath = path.join(__dirname, ".matchers");
     console.log(`::add-matcher::${path.join(matchersPath, "rust.json")}`);
-
     const actionInput = input.get();
-
-    try {
-        await run(actionInput);
-    } catch (error) {
-        if (error instanceof Error) core.setFailed(error);
-        else core.setFailed(`Unknown Error: ${error}`);
-    }
+    await run(actionInput);
 }
 
-void main();
+main().catch((e) => core.setFailed(getErrorMessage(e)));

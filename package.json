@@ -36,7 +36,7 @@
         "url": "https://github.com/actions-rs/cargo/issues"
     },
     "dependencies": {
-        "@actions-for-rust/core": "^0.1.7",
+        "@actions-for-rust/core": "^0.1.8",
         "@actions/core": "^1.10.0",
         "string-argv": "^0.3.1"
     },
