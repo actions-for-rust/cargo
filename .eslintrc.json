@@ -13,6 +13,6 @@
         "prettier"
     ],
     "rules": {
-        "@typescript-eslint/ban-ts-ignore": "off"
+        "@typescript-eslint/restrict-template-expressions": "off"
     }
 }
